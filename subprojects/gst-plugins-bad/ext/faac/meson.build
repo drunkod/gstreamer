@@ -2,6 +2,10 @@
 # Аргумент 'required' определяется опцией 'faac', определенной в другом месте.
 faac_dep = cc.find_library('faac', required : get_option('faac'))
 
+echo 'from faac mrson build'
+echo $plugins_install_dir 
+plugins_install_dir = join_paths(get_option('prefix'), get_option('libdir'), 'gstreamer-1.0')
+echo $plugins_install_dir 
 # Проверьте, существует ли заголовочный файл 'faac.h' и содержит ли он символ 'faacEncOpen'.
 # Это важно для обеспечения доступности необходимых функций.
 have_faac_h = cc.has_header_symbol('faac.h', 'faacEncOpen')
