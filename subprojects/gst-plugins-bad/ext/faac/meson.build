@@ -1,8 +1,7 @@
 # Попробуйте найти библиотеку 'faac' с помощью компилятора и запишите результат.
 # Аргумент 'required' определяется опцией 'faac', определенной в другом месте.
 # faac_dep = cc.find_library('faac', required : get_option('faac'))
-
-faac_dep = dependency('faac', version : '>= 1.30', required : get_option('faac'))
+faac_dep = dependency('faac', fallback: ['faac', 'faac_dep'], required : get_option('faac'))
 
 message('faac_dep found: ' + faac_dep.found().to_string())
 message('from faac meson build')
